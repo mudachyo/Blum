@@ -1,0 +1,68 @@
+[
+  {
+    "creationDate": 1717082612232,
+    "description": "",
+    "extensionRules": [
+      {
+        "action": {
+          "responseHeaders": [
+            {
+              "header": "Content-Security-Policy",
+              "operation": "remove"
+            },
+            {
+              "header": "X-Frame-Options",
+              "operation": "remove"
+            }
+          ],
+          "type": "modifyHeaders"
+        },
+        "condition": {
+          "excludedInitiatorDomains": [
+            "requestly.io"
+          ],
+          "excludedRequestDomains": [
+            "requestly.io"
+          ],
+          "urlFilter": "*://telegram.blum.codes/*"
+        }
+      }
+    ],
+    "groupId": "",
+    "id": "Headers_ko2z8",
+    "isSample": false,
+    "modificationDate": 1717082730935,
+    "name": "Blum-web",
+    "objectType": "rule",
+    "pairs": [
+      {
+        "id": "r2hmh",
+        "modifications": {
+          "Response": [
+            {
+              "header": "Content-Security-Policy",
+              "id": "1sxd4",
+              "type": "Remove",
+              "value": ""
+            },
+            {
+              "header": "X-Frame-Options",
+              "id": "x63dz",
+              "type": "Remove",
+              "value": ""
+            }
+          ]
+        },
+        "source": {
+          "key": "Url",
+          "operator": "Contains",
+          "value": "*://telegram.blum.codes/*"
+        }
+      }
+    ],
+    "ruleType": "Headers",
+    "schemaVersion": "3.0.0",
+    "status": "Active",
+    "version": 2
+  }
+]
