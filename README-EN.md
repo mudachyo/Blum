@@ -17,7 +17,7 @@
 > 
 > - [Hamster Kombat](https://github.com/mudachyo/Hamster-Kombat)
 > 
-> - [TapSwap](https://github.com/mudachyo/TapSwap)
+> - [TapSwap + Autoclicker](https://github.com/mudachyo/TapSwap)
 > 
 > - [MemeFi](https://github.com/mudachyo/MemeFi-Coin)
 > 
