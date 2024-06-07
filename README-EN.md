@@ -15,7 +15,7 @@
 > [!TIP]
 > Other repositories:
 > 
-> - [Hamster Kombat](https://github.com/mudachyo/Hamster-Kombat)
+> - [Hamster Kombat + Autoclicker](https://github.com/mudachyo/Hamster-Kombat)
 > 
 > - [TapSwap + Autoclicker](https://github.com/mudachyo/TapSwap)
 > 
