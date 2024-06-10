@@ -1,15 +1,20 @@
 > [!NOTE]
 > - Contacts: [Telegram](https://t.me/mudachyo)
-> 
+> - Channel: [Telegram Channel](https://t.me/shopalenka) 
 > - 🇷🇺 README на русском доступен [здесь](README.md)
 ---
 ## How to run  
 - Install the extension in your browser [Requestly](https://chromewebstore.google.com/detail/requestly-intercept-modif/mdnleldcmiljblolnjhpnblkcekpdkpa)
 - Open https://app.requestly.io/rules#sharedList/1717097838475-Blum-web
-- Click _Import to my rules_ on the top right.
-- ![Import to my rules](import.png)
+- Click _Import to my rules_ on the top right. ![Import to my rules](import.png)
 - Open [Bot Blum](https://web.telegram.org/k/#?tgaddr=tg%3A%2F%2Fresolve%3Fdomain%3DBlumCryptoBot%26appname%3Dapp%26startapp%3Dref_jcGkWMkJaN) and run the game
 
+## Auto Clicker
+- Automatically clicks on game items such as flowers, bombs and freezes, automatically starts a new game, has a Pause/Resume button, displays stats after each game.
+- Открыть https://app.requestly.io/rules#sharedList/1717982966552-Blum-Autoclicker
+- Click _Import to my rules_ on the top right.
+- Open [Bot Blum](https://web.telegram.org/k/#?tgaddr=tg%3A%2F%2Fresolve%3Fdomain%3DBlumCryptoBot%26appname%3Dapp%26startapp%3Dref_jcGkWMkJaN) and run the game
+  
 ## ![Result](result.png)
 ---
 > [!TIP]
@@ -21,7 +26,7 @@
 > 
 > - [MemeFi](https://github.com/mudachyo/MemeFi-Coin)
 > 
-> - [Blum](https://github.com/mudachyo/Blum)
+> - [Blum + Autoclicker](https://github.com/mudachyo/Blum)
 ---
 > [!IMPORTANT] 
 > Donation
