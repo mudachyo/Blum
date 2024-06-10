@@ -27,9 +27,11 @@
 > 
 > - [TapSwap + Autoclicker](https://github.com/mudachyo/TapSwap)
 > 
-> - [MemeFi](https://github.com/mudachyo/MemeFi-Coin)
-> 
 > - [Blum + Autoclicker](https://github.com/mudachyo/Blum)
+>
+> - [PixelTap + Autoclicker](https://github.com/mudachyo/PixelTap)
+> 
+> - [MemeFi](https://github.com/mudachyo/MemeFi-Coin)
 ---
 > [!IMPORTANT] 
 > Donation
