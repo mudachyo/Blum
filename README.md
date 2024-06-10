@@ -21,7 +21,7 @@
 ## ![Результат](result.png)
 ---
 > [!TIP]
-> Other repositories:
+> Другие репозитории:
 > 
 > - [Hamster Kombat + Autoclicker](https://github.com/mudachyo/Hamster-Kombat)
 > 
