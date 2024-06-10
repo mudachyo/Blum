@@ -10,7 +10,7 @@
 - Open [Bot Blum](https://web.telegram.org/k/#?tgaddr=tg%3A%2F%2Fresolve%3Fdomain%3DBlumCryptoBot%26appname%3Dapp%26startapp%3Dref_jcGkWMkJaN) and run the game
 
 ## Auto Clicker
-- Automatically clicks on game items such as flowers, bombs and freezes, automatically starts a new game, has a Pause/Resume button, displays stats after each game.
+- Automatically clicks on in-game items such as flowers, bombs and freezes, has a pause/resume button, and displays your stats after each game.
 - Открыть https://app.requestly.io/rules#sharedList/1717982966552-Blum-Autoclicker
 - Click _Import to my rules_ on the top right.
 - Open [Bot Blum](https://web.telegram.org/k/#?tgaddr=tg%3A%2F%2Fresolve%3Fdomain%3DBlumCryptoBot%26appname%3Dapp%26startapp%3Dref_jcGkWMkJaN) and run the game
