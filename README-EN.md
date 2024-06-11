@@ -12,7 +12,7 @@
 
 ## Auto Clicker
 - Automatically clicks on in-game items such as flowers, bombs and freezes, has a pause/resume button, and displays your stats after each game.
-- Открыть https://app.requestly.io/rules#sharedList/1717982966552-Blum-Autoclicker
+- Open https://app.requestly.io/rules#sharedList/1717982966552-Blum-Autoclicker
 - Click _Import to my rules_ on the top right. and turn on the Status switch ![status](status.png)
 - Open [Bot Blum](https://web.telegram.org/k/#?tgaddr=tg%3A%2F%2Fresolve%3Fdomain%3DBlumCryptoBot%26appname%3Dapp%26startapp%3Dref_jcGkWMkJaN) and run the game
 
@@ -31,7 +31,7 @@
 >
 > - [PixelTap + Autoclicker](https://github.com/mudachyo/PixelTap)
 > 
-> - [MemeFi](https://github.com/mudachyo/MemeFi-Coin)
+> - [MemeFi + Autoclicker](https://github.com/mudachyo/MemeFi-Coin)
 ---
 > [!IMPORTANT] 
 > Donation
