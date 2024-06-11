@@ -5,7 +5,7 @@
 ---
 ## How to run  
 - Install the extension in your browser [Requestly](https://chromewebstore.google.com/detail/requestly-intercept-modif/mdnleldcmiljblolnjhpnblkcekpdkpa)
-- Open https://app.requestly.io/rules#sharedList/1717097838475-Blum-web
+- Open https://app.requestly.io/rules#sharedList/1718108026311-Blum-web
 - Click _Import to my rules_ on the top right. ![Import to my rules](import.png) 
 - Turn on the Status switch ![status](status.png)
 - Open [Bot Blum](https://web.telegram.org/k/#?tgaddr=tg%3A%2F%2Fresolve%3Fdomain%3DBlumCryptoBot%26appname%3Dapp%26startapp%3Dref_jcGkWMkJaN) and run the game
