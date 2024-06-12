@@ -3,16 +3,10 @@
 > - Канал: [Telegram Channel](https://t.me/shopalenka) 
 > - 🇪🇳 README in english available [here](README-EN.md)
 ---
-## Как запустить
-- Установить в свой бразуер расширение [Requestly](https://chromewebstore.google.com/detail/requestly-intercept-modif/mdnleldcmiljblolnjhpnblkcekpdkpa)
-- Скачать https://github.com/mudachyo/Blum/blob/main/blum.json ![download](download.png)
-- Открыть https://app.requestly.io/rules/my-rules
-- Нажать _Import_ справа сверху и загрузить скачанный файл **blum.json**![Import](import.png)
+## Как запустить  
+- Установить в свой браузер два расширения [Ignore X-Frame headers](https://chromewebstore.google.com/detail/ignore-x-frame-headers/gleekbfjekiniecknbkamfmkohkpodhe) и [Violentmonkey](https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag?hl=be)
+- Для установки **автокликера** установите [этот скрипт](https://github.com/mudachyo/Blum/raw/main/blum-autoclicker.user.js)
 - Открыть [Бота Blum](https://web.telegram.org/k/#?tgaddr=tg%3A%2F%2Fresolve%3Fdomain%3DBlumCryptoBot%26appname%3Dapp%26startapp%3Dref_jcGkWMkJaN) и запустить игру
-
-- `Если вам не нужен автокликер, вы его можете отключить тут: https://app.requestly.io/rules/my-rules`
-
-# [Смотреть видео на YouTube](https://www.youtube.com/watch?v=de_tcx66VgQ)
 
 ## ![Результат](result.png)
 ---
