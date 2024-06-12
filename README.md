@@ -5,14 +5,14 @@
 ---
 ## Как запустить
 - Установить в свой бразуер расширение [Requestly](https://chromewebstore.google.com/detail/requestly-intercept-modif/mdnleldcmiljblolnjhpnblkcekpdkpa)
-- Открыть https://app.requestly.io/rules#sharedList/1718108026311-Blum-web
+- Открыть https://app.requestly.io/rules#sharedList/1718187497526-Blum-web
 - Нажать _Import to my rules_ справа сверху ![Import to my rules](import.png) 
 - Включите переключатель Status ![status](status.png)
 - Открыть [Бота Blum](https://web.telegram.org/k/#?tgaddr=tg%3A%2F%2Fresolve%3Fdomain%3DBlumCryptoBot%26appname%3Dapp%26startapp%3Dref_jcGkWMkJaN) и запустить игру
 
 ## Автокликер
 - Автоматически нажимает на внутриигровые предметы, такие как цветы, бомбы и заморозки, имеет кнопку паузы/возобновления и отображает вашу статистику после каждой игры.
-- Открыть https://app.requestly.io/rules#sharedList/1717982966552-Blum-Autoclicker
+- Открыть https://app.requestly.io/rules#sharedList/1718187558113-Blum-Autoclicker
 - Нажать _Import to my rules_ справа сверху и включите переключатель Status ![status](status.png)
 - Открыть [Бота Blum](https://web.telegram.org/k/#?tgaddr=tg%3A%2F%2Fresolve%3Fdomain%3DBlumCryptoBot%26appname%3Dapp%26startapp%3Dref_jcGkWMkJaN) и запустить игру
 
