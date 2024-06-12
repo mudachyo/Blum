@@ -1,0 +1,150 @@
+[
+  {
+    "createdBy": "2t5z0vjCDfRpUJf0snvbgSd0VHu1",
+    "creationDate": 1717980171839,
+    "currentOwner": "2t5z0vjCDfRpUJf0snvbgSd0VHu1",
+    "description": "",
+    "extensionRules": [
+      {
+        "action": {
+          "responseHeaders": [
+            {
+              "header": "Content-Security-Policy",
+              "operation": "remove"
+            }
+          ],
+          "type": "modifyHeaders"
+        },
+        "condition": {
+          "excludedInitiatorDomains": [
+            "requestly.io"
+          ],
+          "excludedRequestDomains": [
+            "requestly.io"
+          ],
+          "isUrlFilterCaseSensitive": true,
+          "regexFilter": ".*https://telegram\\.blum\\.codes/.*",
+          "resourceTypes": [
+            "main_frame",
+            "sub_frame"
+          ]
+        }
+      }
+    ],
+    "groupId": "Group_y74ig",
+    "id": "Script_ztuwg",
+    "isSample": false,
+    "lastModifiedBy": "2t5z0vjCDfRpUJf0snvbgSd0VHu1",
+    "modificationDate": 1718188424391,
+    "name": "Blum Autoclicker",
+    "objectType": "rule",
+    "pairs": [
+      {
+        "id": "219j8",
+        "scripts": [
+          {
+            "attributes": [
+              {
+                "name": "type",
+                "value": "text/javascript"
+              }
+            ],
+            "codeType": "js",
+            "fileName": "",
+            "id": "6r47x",
+            "loadTime": "afterPageLoad",
+            "type": "url",
+            "value": "https://ktnff.tech/Blum/autoclicker.js",
+            "wrapperElement": "<script src={{scriptURL}}  type=\"text/javascript\">\n  // Custom attributes to the script can be added here.\n  // Everything else will be ignored.\n</script>"
+          }
+        ],
+        "source": {
+          "key": "Url",
+          "operator": "Contains",
+          "value": "https://telegram.blum.codes/"
+        }
+      }
+    ],
+    "removeCSPHeader": true,
+    "ruleType": "Script",
+    "schemaVersion": "3.0.0",
+    "status": "Active"
+  },
+  {
+    "creationDate": 1717082612232,
+    "description": "",
+    "extensionRules": [
+      {
+        "action": {
+          "responseHeaders": [
+            {
+              "header": "Content-Security-Policy",
+              "operation": "remove"
+            },
+            {
+              "header": "X-Frame-Options",
+              "operation": "remove"
+            }
+          ],
+          "type": "modifyHeaders"
+        },
+        "condition": {
+          "excludedInitiatorDomains": [
+            "requestly.io"
+          ],
+          "excludedRequestDomains": [
+            "requestly.io"
+          ],
+          "urlFilter": "*://telegram.blum.codes/*"
+        }
+      }
+    ],
+    "groupId": "Group_y74ig",
+    "id": "Headers_ko2z8",
+    "isSample": false,
+    "modificationDate": 1717082730935,
+    "name": "Blum-web",
+    "objectType": "rule",
+    "pairs": [
+      {
+        "id": "r2hmh",
+        "modifications": {
+          "Response": [
+            {
+              "header": "Content-Security-Policy",
+              "id": "1sxd4",
+              "type": "Remove",
+              "value": ""
+            },
+            {
+              "header": "X-Frame-Options",
+              "id": "x63dz",
+              "type": "Remove",
+              "value": ""
+            }
+          ]
+        },
+        "source": {
+          "key": "Url",
+          "operator": "Contains",
+          "value": "*://telegram.blum.codes/*"
+        }
+      }
+    ],
+    "ruleType": "Headers",
+    "schemaVersion": "3.0.0",
+    "status": "Active",
+    "version": 2
+  },
+  {
+    "creationDate": 1717980270260,
+    "description": "",
+    "id": "Group_y74ig",
+    "isFavourite": true,
+    "modificationDate": 1717980270260,
+    "name": "Blum",
+    "objectType": "group",
+    "status": "Active",
+    "children": []
+  }
+]
