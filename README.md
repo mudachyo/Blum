@@ -22,6 +22,16 @@
 > - [PixelTap + Autoclicker](https://github.com/mudachyo/PixelTap)
 > 
 > - [MemeFi + Autoclicker](https://github.com/mudachyo/MemeFi-Coin)
+>
+> - [Yescoin + Autoclicker](https://github.com/mudachyo/Yescoin)
+>
+> - [Gemz + Autoclicker](https://github.com/mudachyo/Gemz)
+>
+> - [Сrossfi + Autoclicker](https://github.com/mudachyo/Crossfi)
+>
+> - [BUMP](https://github.com/mudachyo/BUMP)
+>
+> - [W-Coin](https://github.com/mudachyo/W-Coin)
 ---
 > [!IMPORTANT] 
 > Пожертвование
