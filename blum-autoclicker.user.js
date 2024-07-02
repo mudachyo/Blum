@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Blum Autoclicker
-// @version      1.1
+// @version      1.2
 // @namespace    Violentmonkey Scripts
 // @author       mudachyo
 // @match        https://telegram.blum.codes/*
@@ -22,8 +22,6 @@ let GAME_SETTINGS = {
 let isGamePaused = false;
 
 try {
-    console.log('Script started');
-
     let gameStats = {
         score: 0,
         bombHits: 0,
@@ -92,17 +90,9 @@ try {
         const rewardElement = document.querySelector('#app > div > div > div.content > div.reward');
         if (rewardElement && !gameStats.isGameOver) {
             gameStats.isGameOver = true;
-            logGameStats();
             resetGameStats();
             resetGameSettings();
-            if (window.__NUXT__.state.$s$0olocQZxou.playPasses > 0) {
-                startNewGame();
-            }
         }
-    }
-
-    function logGameStats() {
-        console.log(`Game Over. Stats: Score: ${gameStats.score}, Bombs: ${gameStats.bombHits}, Ice: ${gameStats.iceHits}, Flowers Skipped: ${gameStats.flowersSkipped}`);
     }
 
     function resetGameStats() {
@@ -123,21 +113,29 @@ try {
             minDelayMs: 2000,
             maxDelayMs: 5000,
         };
-
     }
 
     function getRandomDelay() {
         return Math.random() * (GAME_SETTINGS.maxDelayMs - GAME_SETTINGS.minDelayMs) + GAME_SETTINGS.minDelayMs;
     }
 
-    function startNewGame() {
-        setTimeout(() => {
-            const newGameButton = document.querySelector("#app > div > div > div.buttons > button:nth-child(2)");
-            if (newGameButton) {
-                newGameButton.click();
-            }
-            gameStats.isGameOver = false;
-        }, getRandomDelay());
+    function getNewGameDelay() {
+        return Math.floor(Math.random() * (3000 - 1000 + 1) + 1000);
+    }
+
+    function checkAndClickPlayButton() {
+        const playButton = document.querySelector('button.kit-button.is-large.is-primary');
+        if (playButton && playButton.textContent.includes('Play')) {
+            setTimeout(() => {
+                playButton.click();
+                gameStats.isGameOver = false;
+            }, getNewGameDelay());
+        }
+    }
+
+    function continuousPlayButtonCheck() {
+        checkAndClickPlayButton();
+        setTimeout(continuousPlayButtonCheck, 1000);
     }
 
     const observer = new MutationObserver(mutations => {
@@ -152,6 +150,8 @@ try {
     if (appElement) {
         observer.observe(appElement, { childList: true, subtree: true });
     }
+
+    continuousPlayButtonCheck();
 
     const pauseButton = document.createElement('button');
     pauseButton.textContent = 'Pause';
@@ -173,5 +173,5 @@ try {
         pauseButton.textContent = isGamePaused ? 'Resume' : 'Pause';
     }
 } catch (e) {
-    console.log('Failed to initiate the game script');
+    // В случае ошибки, не выводим ее в консоль
 }
