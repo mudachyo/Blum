@@ -125,7 +125,7 @@ try {
 
     function checkAndClickPlayButton() {
         const playButton = document.querySelector('button.kit-button.is-large.is-primary');
-        if (playButton && playButton.textContent.includes('Play')) {
+        if (!isGamePaused && playButton && playButton.textContent.includes('Play')) {
             setTimeout(() => {
                 playButton.click();
                 gameStats.isGameOver = false;

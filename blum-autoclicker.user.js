@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Blum Autoclicker
-// @version      1.3
+// @version      1.4
 // @namespace    Violentmonkey Scripts
 // @author       mudachyo
 // @match        https://telegram.blum.codes/*
@@ -133,7 +133,7 @@ try {
 
     function checkAndClickPlayButton() {
         const playButton = document.querySelector('button.kit-button.is-large.is-primary');
-        if (playButton && playButton.textContent.includes('Play')) {
+        if (!isGamePaused && playButton && playButton.textContent.includes('Play')) {
             setTimeout(() => {
                 playButton.click();
                 gameStats.isGameOver = false;
