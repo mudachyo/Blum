@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Blum Autoclicker
-// @version      1.5
+// @version      1.6
 // @namespace    Violentmonkey Scripts
 // @author       mudachyo
 // @match        https://telegram.blum.codes/*
@@ -115,7 +115,6 @@ try {
         };
     }
 
-\
     function getNewGameDelay() {
         return Math.floor(Math.random() * (3000 - 1000 + 1) + 1000);
     }
