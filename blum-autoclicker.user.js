@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Blum Autoclicker
-// @version      1.4
+// @version      1.5
 // @namespace    Violentmonkey Scripts
 // @author       mudachyo
 // @match        https://telegram.blum.codes/*
@@ -12,8 +12,9 @@
 // ==/UserScript==
 
 let GAME_SETTINGS = {
-    clickPercentage: Math.floor(Math.random() * 11) + 75, // Вероятность нажатия на элемент (цветок или бомбу) в процентах / Probability of clicking on an element (flower or bomb) in percentage
+    minBombHits: Math.floor(Math.random() * 2), // Минимальное количество нажатий на бомбу в процентах / Percentage probability of pressing the bomb
     minIceHits: Math.floor(Math.random() * 2) + 2, // Минимальное количество нажатий на заморозку / Minimum number of freeze hits
+    flowerSkipPercentage: Math.floor(Math.random() * 11) + 15, // Вероятность нажатия на цветок в процентах / Percentage probability of clicking on a flower
     minDelayMs: 2000, // Минимальная задержка между действиями в миллисекундах / Minimum delay between actions in milliseconds
     maxDelayMs: 5000, // Максимальная задержка между действиями в миллисекундах / Maximum delay between actions in milliseconds
 };
@@ -25,10 +26,7 @@ try {
         score: 0,
         bombHits: 0,
         iceHits: 0,
-        flowersClicked: 0,
         flowersSkipped: 0,
-        bombsClicked: 0,
-        bombsSkipped: 0,
         isGameOver: false,
     };
 
@@ -58,24 +56,20 @@ try {
     }
 
     function processFlower(element) {
-        const shouldClick = Math.random() < (GAME_SETTINGS.clickPercentage / 100);
-        if (shouldClick) {
-            gameStats.score++;
-            gameStats.flowersClicked++;
-            clickElement(element);
-        } else {
+        const shouldSkip = Math.random() < (GAME_SETTINGS.flowerSkipPercentage / 100);
+        if (shouldSkip) {
             gameStats.flowersSkipped++;
+        } else {
+            gameStats.score++;
+            clickElement(element);
         }
     }
 
     function processBomb(element) {
-        const shouldClick = Math.random() < (GAME_SETTINGS.clickPercentage / 100);
-        if (shouldClick) {
+        if (gameStats.bombHits < GAME_SETTINGS.minBombHits) {
             gameStats.score = 0;
-            gameStats.bombsClicked++;
             clickElement(element);
-        } else {
-            gameStats.bombsSkipped++;
+            gameStats.bombHits++;
         }
     }
 
@@ -106,27 +100,22 @@ try {
             score: 0,
             bombHits: 0,
             iceHits: 0,
-            flowersClicked: 0,
             flowersSkipped: 0,
-            bombsClicked: 0,
-            bombsSkipped: 0,
             isGameOver: false,
         };
     }
 
     function resetGameSettings() {
         GAME_SETTINGS = {
-            clickPercentage: Math.floor(Math.random() * 11) + 75,  // Вероятность нажатия на элемент (цветок или бомбу) в процентах / Probability of clicking on an element (flower or bomb) in percentage
+            minBombHits: Math.floor(Math.random() * 2),  // Минимальное количество нажатий на бомбу в процентах / Percentage probability of pressing the bomb
             minIceHits: Math.floor(Math.random() * 2) + 2, // Минимальное количество нажатий на заморозку / Minimum number of freeze hits
+            flowerSkipPercentage: Math.floor(Math.random() * 11) + 15, // Вероятность нажатия на цветок в процентах / Percentage probability of clicking on a flower
             minDelayMs: 2000, // Минимальная задержка между действиями в миллисекундах / Minimum delay between actions in milliseconds
             maxDelayMs: 5000, // Максимальная задержка между действиями в миллисекундах / Maximum delay between actions in milliseconds
         };
     }
 
-    function getRandomDelay() {
-        return Math.random() * (GAME_SETTINGS.maxDelayMs - GAME_SETTINGS.minDelayMs) + GAME_SETTINGS.minDelayMs;
-    }
-
+\
     function getNewGameDelay() {
         return Math.floor(Math.random() * (3000 - 1000 + 1) + 1000);
     }
