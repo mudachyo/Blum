@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Blum Autoclicker
-// @version      1.7
+// @version      1.8
 // @namespace    Violentmonkey Scripts
 // @author       mudachyo
 // @match        https://telegram.blum.codes/*
@@ -109,18 +109,18 @@ try {
         return Math.floor(Math.random() * (GAME_SETTINGS.maxDelayMs - GAME_SETTINGS.minDelayMs + 1) + GAME_SETTINGS.minDelayMs);
     }
 
-	function checkAndClickPlayButton() {
-		const playButtons = document.querySelectorAll('button.kit-button.is-large.is-primary');
-		
-		playButtons.forEach(button => {
-			if (!isGamePaused && GAME_SETTINGS.autoClickPlay && /Play/.test(button.textContent)) {
-				setTimeout(() => {
-					button.click();
-					gameStats.isGameOver = false;
-				}, getNewGameDelay());
-			}
-		});
-	}
+  function checkAndClickPlayButton() {
+    const playButtons = document.querySelectorAll('button.kit-button.is-large.is-primary, a.play-btn[href="/game"]');
+
+    playButtons.forEach(button => {
+        if (!isGamePaused && GAME_SETTINGS.autoClickPlay && /Play/.test(button.textContent)) {
+            setTimeout(() => {
+                button.click();
+                gameStats.isGameOver = false;
+            }, getNewGameDelay());
+        }
+    });
+}
 
 
     function continuousPlayButtonCheck() {
