@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Blum Autoclicker
-// @version      2.1
+// @version      2.2
 // @namespace    Violentmonkey Scripts
 // @author       mudachyo
 // @match        https://telegram.blum.codes/*
@@ -418,15 +418,22 @@ try {
     const inputContainer = document.createElement('div');
     inputContainer.className = 'setting-input';
 
-    setInterval(() => {
-      const claimButton = document.querySelector('button.kit-button.is-large.is-drop.is-fill.button.is-done');
-      const startFarmingButton = document.querySelector('button.kit-button.is-large.is-primary.is-fill.button');
-      if (claimButton) {
-        claimButton.click();
-      } else if (startFarmingButton) {
-        startFarmingButton.click();
-      }
-    }, Math.floor(Math.random() * 5000) + 5000);
+    function AutoClaimAndStart() {
+      setInterval(() => {
+        const claimButton = document.querySelector('button.kit-button.is-large.is-drop.is-fill.button.is-done');
+        const startFarmingButton = document.querySelector('button.kit-button.is-large.is-primary.is-fill.button');
+        const continueButton = document.querySelector('button.kit-button.is-large.is-primary.is-fill.btn');
+        if (claimButton) {
+          claimButton.click();
+        } else if (startFarmingButton) {
+          startFarmingButton.click();
+        } else if (continueButton) {
+          continueButton.click();
+        }
+      }, Math.floor(Math.random() * 5000) + 5000);
+    }
+
+    AutoClaimAndStart();
 
     let input;
     if (type === 'checkbox') {
