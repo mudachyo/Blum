@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Blum Autoclicker
-// @version      2.3
+// @version      2.4
 // @namespace    Violentmonkey Scripts
 // @author       mudachyo
 // @match        https://telegram.blum.codes/*
@@ -112,9 +112,11 @@ try {
 				}
 				item.onClick(item);
 			}
+			
+			item.isExplosion = true;
+			item.addedAt = performance.now();
 		}, getClickDelay());
 	}
-
 
 	// Функция для расчета задержки между кликами
 	function getClickDelay() {
