@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Blum Autoclicker
-// @version      2.5
+// @version      2.4
 // @namespace    Violentmonkey Scripts
 // @author       mudachyo
 // @match        https://telegram.blum.codes/*
@@ -73,9 +73,11 @@ try {
 	}
 
 	function processBomb(item) {
-		gameStats.score = 0;
-		clickElement(item);
-		gameStats.bombHits++;
+		if (gameStats.bombHits < GAME_SETTINGS.minBombHits) {
+			gameStats.score = 0;
+			clickElement(item);
+			gameStats.bombHits++;
+		}
 	}
 
 	function processIce(item) {
@@ -145,38 +147,21 @@ try {
 	function getNewGameDelay() {
 		return Math.floor(Math.random() * (GAME_SETTINGS.maxDelayMs - GAME_SETTINGS.minDelayMs + 1) + GAME_SETTINGS.minDelayMs);
 	}
+
 	function checkAndClickPlayButton() {
 		const playButtons = document.querySelectorAll('button.kit-button.is-large.is-primary, a.play-btn[href="/game"], button.kit-button.is-large.is-primary');
 
 		playButtons.forEach(button => {
 			if (!isGamePaused && GAME_SETTINGS.autoClickPlay && (/Play/.test(button.textContent) || /Continue/.test(button.textContent))) {
 				setTimeout(() => {
-					gameStats.isGameOver = true;
-					resetGameStats();
 					button.click();
+					gameStats.isGameOver = false;
 				}, getNewGameDelay());
 			}
 		});
 	}
 
-	function checkAndClickResetButton() {
-		const errorPage = document.querySelector('div[data-v-26af7de6].error.page.wrapper');
-		if (errorPage) {
-			const resetButton = errorPage.querySelector('button.reset');
-			if (resetButton) {
-				resetButton.click();
-			}
-		}
-	}
 
-	function continuousErrorCheck() {
-		checkAndClickResetButton();
-		const delay = Math.floor(Math.random() * 1000) + 2000;
-		setTimeout(continuousErrorCheck, delay);
-	}
-
-	continuousErrorCheck();
-	
 	function continuousPlayButtonCheck() {
 		checkAndClickPlayButton();
 		setTimeout(continuousPlayButtonCheck, 1000);
