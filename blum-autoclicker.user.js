@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Blum Autoclicker
-// @version      2.5
+// @version      2.6
 // @namespace    Violentmonkey Scripts
 // @author       mudachyo
 // @match        https://telegram.blum.codes/*
@@ -73,9 +73,11 @@ try {
 	}
 
 	function processBomb(item) {
-		gameStats.score = 0;
-		clickElement(item);
-		gameStats.bombHits++;
+		if (gameStats.bombHits < GAME_SETTINGS.minBombHits) {
+			gameStats.score = 0;
+			clickElement(item);
+			gameStats.bombHits++;
+		}
 	}
 
 	function processIce(item) {
@@ -149,7 +151,7 @@ try {
 		const playButtons = document.querySelectorAll('button.kit-button.is-large.is-primary, a.play-btn[href="/game"], button.kit-button.is-large.is-primary');
 
 		playButtons.forEach(button => {
-			if (!isGamePaused && GAME_SETTINGS.autoClickPlay && (/Play/.test(button.textContent) || /Continue/.test(button.textContent))) {
+			if (!isGamePaused && GAME_SETTINGS.autoClickPlay && button.textContent.trim().length > 0) {
 				setTimeout(() => {
 					gameStats.isGameOver = true;
 					resetGameStats();
