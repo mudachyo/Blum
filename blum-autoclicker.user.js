@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Blum Autoclicker
-// @version      2.6
+// @version      2.7
 // @namespace    Violentmonkey Scripts
 // @author       mudachyo
 // @match        https://telegram.blum.codes/*
@@ -18,7 +18,9 @@ let GAME_SETTINGS = {
 	minDelayMs: 500,
 	maxDelayMs: 999,
 	autoClickPlay: false,
-	dogsProbability: (98 + Math.random()) / 100
+	dogsProbability: (98 + Math.random()) / 100,
+	trumpProbability: (98 + Math.random()) / 100,
+	harrisProbability: (98 + Math.random()) / 100
 };
 
 
@@ -30,6 +32,8 @@ try {
 		bombHits: 0,
 		iceHits: 0,
 		dogsHits: 0,
+		trumpHits: 0,
+		harrisHits: 0,
 		flowersSkipped: 0,
 		isGameOver: false,
 	};
@@ -58,6 +62,12 @@ try {
 				break;
 			case "DOGS":
 				processDogs(item);
+				break;
+			case "TRUMP":
+				processTrump(item);
+				break;
+			case "HARRIS":
+				processHarris(item);
 				break;
 		}
 	}
@@ -94,7 +104,22 @@ try {
 		}
 	}
 
+	function processTrump(item) {
+		if (Math.random() < GAME_SETTINGS.trumpProbability) {
+			clickElement(item);
+			gameStats.trumpHits++;
+		}
+	}
+
+	function processHarris(item) {
+		if (Math.random() < GAME_SETTINGS.harrisProbability) {
+			clickElement(item);
+			gameStats.harrisHits++;
+		}
+	}
+
 	function clickElement(item) {
+		if (isGamePaused) return;
 		const createEvent = (type, EventClass) => new EventClass(type, {
 			bubbles: true,
 			cancelable: true,
