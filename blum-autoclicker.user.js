@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Blum Autoclicker
-// @version      2.8
+// @version      2.9
 // @namespace    Violentmonkey Scripts
 // @author       mudachyo
 // @match        https://telegram.blum.codes/*
@@ -11,7 +11,7 @@
 // @homepage     https://github.com/mudachyo/Blum
 // ==/UserScript==
 
-const SCRIPT_VERSION = '2.8';
+const SCRIPT_VERSION = '2.9';
 const SCRIPT_URL = 'https://raw.githubusercontent.com/mudachyo/Blum/main/blum-autoclicker.user.js';
 
 let GAME_SETTINGS = {
@@ -59,6 +59,7 @@ const answers = {
     "What are Telegram Mini Apps?": "CRYPTOBLUM",
     "Smart Contracts 101": "SMARTBLUM",
 	"Crypto Slang. Part 3": "BOOBLUM",
+	"Regulation: Yay or Nay?": "BLUMSSS",
 };
 
 let isGamePaused = false;
