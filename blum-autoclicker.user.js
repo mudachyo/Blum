@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Blum Autoclicker
-// @version      3.0
+// @version      3.1
 // @namespace    Violentmonkey Scripts
 // @author       mudachyo
 // @match        https://telegram.blum.codes/*
@@ -11,7 +11,7 @@
 // @homepage     https://github.com/mudachyo/Blum
 // ==/UserScript==
 
-const SCRIPT_VERSION = '3.0';
+const SCRIPT_VERSION = '3.1';
 const SCRIPT_URL = 'https://raw.githubusercontent.com/mudachyo/Blum/main/blum-autoclicker.user.js';
 
 let GAME_SETTINGS = {
@@ -31,7 +31,7 @@ const answers = {
     "Understanding Gas Fees": "CRYPTOGAS",
     "What's Crypto DEX?": "DEXXX",
     "Node Sales in Crypto": "BLUMIFY",
-    "Choosing A Crypto Exchange": "CRYPTOZONE",
+    "Choosing a Crypto Exchange": "CRYPTOZONE",
     "Crypto Slang. Part 2": "FOMOOO",
     "DeFi Risks: Key Insights": "BLUMHELPS",
     "Pumptober Special": "PUMPIT",
