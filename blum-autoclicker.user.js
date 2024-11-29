@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Blum Autoclicker
-// @version      3.1
+// @version      3.2
 // @namespace    Violentmonkey Scripts
 // @author       mudachyo
 // @match        https://telegram.blum.codes/*
@@ -11,7 +11,7 @@
 // @homepage     https://github.com/mudachyo/Blum
 // ==/UserScript==
 
-const SCRIPT_VERSION = '3.1';
+const SCRIPT_VERSION = '3.2';
 const SCRIPT_URL = 'https://raw.githubusercontent.com/mudachyo/Blum/main/blum-autoclicker.user.js';
 
 let GAME_SETTINGS = {
@@ -61,6 +61,7 @@ const answers = {
 	"Crypto Slang. Part 3": "BOOBLUM",
 	"Regulation: Yay or Nay?": "BLUMSSS",
 	"DEX History": "GODEX",
+	"Crypto Regulations #2": "BLUMRULES",
 };
 
 let isGamePaused = false;
