@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Blum Autoclicker
-// @version      3.3
+// @version      3.4
 // @namespace    Violentmonkey Scripts
 // @author       mudachyo
 // @match        https://telegram.blum.codes/*
@@ -11,7 +11,7 @@
 // @homepage     https://github.com/mudachyo/Blum
 // ==/UserScript==
 
-const SCRIPT_VERSION = '3.3';
+const SCRIPT_VERSION = '3.4';
 const SCRIPT_URL = 'https://raw.githubusercontent.com/mudachyo/Blum/main/blum-autoclicker.user.js';
 
 let GAME_SETTINGS = {
@@ -22,50 +22,113 @@ let GAME_SETTINGS = {
 	maxDelayMs: 999,
 	autoClickPlay: false,
 	dogsProbability: (98 + Math.random()) / 100,
-	checkForUpdates: true
+	checkForUpdates: true,
+	autoVideoTask: true,
+	autoVerifyCode: true,
+	autoClaimTask: true,
 };
 
+// INFO : Updated with new secret codes
 const answers = {
-    "What’s Next for DeFi?": "BLUMNOW",
-    "What is Slippage?": "CRYPTOBUZZ",
-    "Understanding Gas Fees": "CRYPTOGAS",
-    "What's Crypto DEX?": "DEXXX",
-    "Node Sales in Crypto": "BLUMIFY",
-    "Choosing a Crypto Exchange": "CRYPTOZONE",
-    "Crypto Slang. Part 2": "FOMOOO",
-    "DeFi Risks: Key Insights": "BLUMHELPS",
-    "Pumptober Special": "PUMPIT",
-    "What is On-chain Analysis?": "BLUMEXTRA",
-    "Crypto Slang. Part 1": "BLUMSTORM",
-    "How To Find Altcoins?": "Ultrablum",
-    "DeFi Explained": "BLUMFORCE",
-    "Sharding Explained": "BLUMTASTIC",
-    "How to trade Perps?": "CRYPTOFAN",
-    "Crypto Terms. Part 1": "BLUMEXPLORER",
-    "Bitcoin Rainbow Chart?": "SOBLUM",
-    "Token Burning: How & Why?": "ONFIRE",
-    "How to Memecoin?": "memeblum",
-    "BLUM TRACK QUEST: Blum": "Big City Life",
-    "Pre-Market Trading?": "WOWBLUM",
-    "Doxxing? What's that?": "NODOXXING",
-    "$2.5M+ DOGS Airdrop": "HAPPYDOGS",
-    "Navigating Crypto": "HEYBLUM",
-    "Liquidity Pools Guide": "BLUMERSSS",
-    "What Are AMMs?": "CRYPTOSMART",
-    "Say No to Rug Pull!": "SUPERBLUM",
-    "Secure your Crypto!": "BEST PROJECT EVER",
-    "Forks Explained": "Go Get",
-    "How To Analyze Crypto": "VALUE",
-    "What are Telegram Mini Apps?": "CRYPTOBLUM",
-    "Smart Contracts 101": "SMARTBLUM",
-	"Crypto Slang. Part 3": "BOOBLUM",
+	"How to Analyze crypto?": "VALUE",
+	"What’s DAO?": "N/A",
+	"Ton voices live": "I LOVE BLUM",
+	"Forks Explained?": "GO GET",
+	"How to secure your crypto": "BEST PROJECT EVE",
+	"Navigating Crypto": "HEYBLUM",
+	"What are Telegram Mini Apps?": "CRYPTOBLUM",
+	"Say No to Rug Pull!": "SUPERBLUM",
+	"What Are AMMs?": "CRYPTOSMART",
+	"Liquidity Pools Guide.": "BLUMERSSS",
+	"$2.5M+ DOGS Airdrop": "HAPPYDOGS",
+	"Doxxing? What’s that?": "NODOXXING",
+	"Pre-Market Trading?": "WOWBLUM",
+	"Play Track and Type Track Name": "BLUM – BIG CITY LIFE",
+	"How to Memecoin?": "MEMEBLUM",
+	"Token Burning – How and why it happens": "ONFIRE",
+	"Bitcoin Rainbow Chart": "SOBLUM",
+	"Crypto Terms Part 1.": "BLUMEXPLORER",
+	"How to Trade Perps?": "CRYPTOFAN",
+	"Shard Explained": "BLUMTASTIC",
+	"DeFi Explained": "BLUMFORCE",
+	"How to find Altcoins?": "ULTRABLUM",
+	"Crypto Slang Part 1": "BLUMSTORM",
+	"What is On-chain Analysis?": "BLUMEXTRA",
+	"Pumptober Special": "PUMPIT",
+	"DeFi Risks: Key Insights": "BLUMHELPS",
+	"Crypto Slang Part 2": "FOMOOO",
+	"What’s Crypto DEX?": "DEXXX",
+	"Choosing a Crypto Exchange": "CRYPTOZONE",
+	"Node Sales in Crypto": "BLUMIFY",
+	"Understanding Gas Fees": "CRYPTOGAS",
+	"What is Slippage?": "CRYPTOBUZZ",
+	"What’s Next for DeFi?": "BLUMNOW",
+	"Smart Contracts 101": "SMARTBLUM",
+	"Crypto Slang Part 3": "BOOBLUM",
 	"Regulation: Yay or Nay?": "BLUMSSS",
 	"DEX History": "GODEX",
 	"Crypto Regulations #2": "BLUMRULES",
 	"P2P Trading Safety Tips": "BLUMTIPS",
+	"Crypto Communities": "BLUMMUNITY",
+	"Dec 6 Crypto News": "HUNDRED",
+	"Dex Evolution": "BLUMSPARK",
+	"Crypto Slang Part 4": "LAMBOBLUM",
+	"What's Crypto DEX?": "DEXXX",
+	"What's Crypto DEX?": "DEXXX",
+	"Node Sales in Crypto": "BLUMIFY",
+	"Choosing a Crypto Exchange": "CRYPTOZONE",
+	"What's Crypto DEX?": "DEXXX",
+	"Node Sales in Crypto": "BLUMIFY",
+	"Choosing a Crypto Exchange": "CRYPTOZONE",
+	"Crypto Slang. Part 2": "FOMOOO",
+	"Crypto Slang. Part 2": "FOMOOO",
+	"DeFi Risks: Key Insights": "BLUMHELPS",
+	"Pumptober Special": "PUMPIT",
+	"What is On-chain Analysis?": "BLUMEXTRA",
+	"Crypto Slang. Part 2": "FOMOOO",
+	"DeFi Risks: Key Insights": "BLUMHELPS",
+	"Pumptober Special": "PUMPIT",
+	"What is On-chain Analysis?": "BLUMEXTRA",
+	"Crypto Slang. Part 1": "BLUMSTORM",
+	"How To Find Altcoins?": "ULTRABLUM",
+	"Sharding Explained": "BLUMTASTIC",
+	"How to trade Perps?": "CRYPTOFAN",
+	"Crypto Terms. Part 1": "BLUMEXPLORER",
+	"Bitcoin Rainbow Chart?": "SOBLUM",
+	"Token Burning: How & Why?": "ONFIRE",
+	"BLUM TRACK QUEST: Blum": "BIG CITY LIFE",
+	"Doxxing? What's that?": "NODOXXING",
+	"Liquidity Pools Guide": "BLUMERSSS",
+	"Liquidity Pools Guide": "BLUMERSSS",
+	"What Are AMMs?": "CRYPTOSMART",
+	"Say No to Rug Pull!": "SUPERBLUM",
+	"Liquidity Pools Guide": "BLUMERSSS",
+	"What Are AMMs?": "CRYPTOSMART",
+	"Say No to Rug Pull!": "SUPERBLUM",
+	"Secure your Crypto!": "BEST PROJECT EVER",
+	"Forks Explained": "GO GET",
+	"How To Analyze Crypto": "VALUE",
+	"Crypto Slang. Part 3": "BOOBLUM"
 };
 
-let isGamePaused = false;
+
+// INFO : updated secret codes without updating the script 🥰
+try {
+	const updatedSecretCodes = await fetch(
+		"https://raw.githubusercontent.com/mudachyo/Blum/refs/heads/main/videoCodes.json"
+	).then(res => {
+		if(!res.ok) 
+			return {};
+		try {
+			return res.json();
+		} catch {
+			return {};
+		}
+	});
+	for (let code in updatedSecretCodes) { answers[code] = updatedSecretCodes[code]; }
+} catch { }
+
+let isGameToolPaused = false;
 
 try {
 	let gameStats = {
@@ -78,7 +141,7 @@ try {
 	};
 
 	const originalArrayPush = Array.prototype.push;
-	Array.prototype.push = function(...items) {
+	Array.prototype.push = function (...items) {
 		items.forEach(item => handleGameElement(item));
 		return originalArrayPush.apply(this, items);
 	};
@@ -138,7 +201,7 @@ try {
 	}
 
 	function clickElement(item) {
-		if (isGamePaused) return;
+		if (isGameToolPaused) return;
 		const createEvent = (type, EventClass) => new EventClass(type, {
 			bubbles: true,
 			cancelable: true,
@@ -246,7 +309,7 @@ try {
 		const playButtons = document.querySelectorAll('button.kit-button.is-large.is-primary, a.play-btn[href="/game"], button.kit-button.is-large.is-primary');
 
 		playButtons.forEach(button => {
-			if (!isGamePaused && GAME_SETTINGS.autoClickPlay && button.textContent.trim().length > 0) {
+			if (!isGameToolPaused && GAME_SETTINGS.autoClickPlay && button.textContent.trim().length > 0) {
 				setTimeout(() => {
 					gameStats.isGameOver = true;
 					resetGameStats();
@@ -323,35 +386,34 @@ try {
 			}
 
 			const question = questionElement.innerText.trim();
+
 			const answer = answers[question];
-
-			if (answer) {
-				const inputElement = document.querySelector(
-					"div.input-container input"
-				);
-
-				if (!inputElement) {
-					console.warn("The field for entering an answer was not found!");
-					return;
-				}
-
-				inputElement.value = answer;
-
-				inputElement.dispatchEvent(new Event("input", { bubbles: true }));
-
-				console.log(`Answer "${answer}" entered for question "${question}".`);
-
-				const submitButton = document.querySelector("div.kit-overlay > div > div > div.kit-fixed-wrapper.no-layout-tabs > button");
-
-				if (submitButton) {
-					submitButton.click();
-					console.log("Button pressed.");
-				} else {
-					console.warn("The button to send was not found!");
-				}
-			} else {
-				console.warn(`The answer for the question "${question}" not found!`);
+			if (!answer) {
+				return console.warn(`The answer for the question "${question}" not found!`);
 			}
+			const inputElement = document.querySelector(
+				"div.input-container input"
+			);
+
+			if (!inputElement) {
+				console.warn("The field for entering an answer was not found!");
+				return;
+			}
+
+			inputElement.value = answer;
+
+			inputElement.dispatchEvent(new Event("input", { bubbles: true }));
+
+			console.log(`Answer "${answer}" entered for question "${question}".`);
+
+			const submitButton = document.querySelector("div.kit-overlay > div > div > div.kit-fixed-wrapper.no-layout-tabs > button");
+
+			if (!submitButton) {
+				console.warn("The button to send was not found!");
+				return;
+			}
+			submitButton.click();
+			console.log("Button pressed.");
 		} catch (error) {
 			console.error("There's been a mistake:", error);
 		}
@@ -359,38 +421,60 @@ try {
 
 	setInterval(answerQuestion, Math.random() * 1000 + 2000);
 
-	function updateSettingsMenu() {
-		document.getElementById('flowerSkipPercentage').value = GAME_SETTINGS.flowerSkipPercentage;
-		document.getElementById('flowerSkipPercentageDisplay').textContent = GAME_SETTINGS.flowerSkipPercentage;
-		document.getElementById('minIceHits').value = GAME_SETTINGS.minIceHits;
-		document.getElementById('minIceHitsDisplay').textContent = GAME_SETTINGS.minIceHits;
-		document.getElementById('minBombHits').value = GAME_SETTINGS.minBombHits;
-		document.getElementById('minBombHitsDisplay').textContent = GAME_SETTINGS.minBombHits;
-		document.getElementById('minDelayMs').value = GAME_SETTINGS.minDelayMs;
-		document.getElementById('minDelayMsDisplay').textContent = GAME_SETTINGS.minDelayMs;
-		document.getElementById('maxDelayMs').value = GAME_SETTINGS.maxDelayMs;
-		document.getElementById('maxDelayMsDisplay').textContent = GAME_SETTINGS.maxDelayMs;
-		document.getElementById('autoClickPlay').checked = GAME_SETTINGS.autoClickPlay;
+	function videoTaskCompletion() {
+		if (isGameToolPaused) return;
+		if (GAME_SETTINGS.autoVideoTask) {
+			Array
+				.from(
+					document.querySelectorAll(".pages-tasks-item:has(>*>*>button.is-status-ready-for-verify) .details"))
+				.filter(
+					verifyBtn => verifyBtn.childNodes[0].textContent in answers
+				)[0] // INFO : get oldest verify button element with secret code in answer list task
+				?.parentElement?.lastChild?.click();
+		}
+		if (GAME_SETTINGS.autoVerifyCode) {
+			document.querySelectorAll(".tasks-list button[class*=not-started]").forEach(e => { e.click() });
+		}
+		if (GAME_SETTINGS.autoClaimTask) {
+			document.querySelectorAll("button.is-status-ready-for-claim").forEach(e => { e.click() });
+		}
 	}
 
-	settingsMenu.appendChild(createSettingElement('Flower Skip (%)', 'flowerSkipPercentage', 'range', 0, 100, 1,
-		'EN: Percentage probability of skipping a flower.<br>' +
-		'RU: Вероятность пропуска цветка в процентах.'));
-	settingsMenu.appendChild(createSettingElement('Min Freeze Hits', 'minIceHits', 'range', 1, 10, 1,
-		'EN: Minimum number of clicks per freeze.<br>' +
-		'RU: Минимальное количество кликов на заморозку.'));
-	settingsMenu.appendChild(createSettingElement('Min Bomb Hits', 'minBombHits', 'range', 0, 10, 1,
-		'EN: Minimum number of clicks per bomb.<br>' +
-		'RU: Минимальное количество кликов на бомбу.'));
-	settingsMenu.appendChild(createSettingElement('Min Delay (ms)', 'minDelayMs', 'range', 10, 10000, 10,
-		'EN: Minimum delay between clicks.<br>' +
-		'RU: Минимальная задержка между кликами.'));
-	settingsMenu.appendChild(createSettingElement('Max Delay (ms)', 'maxDelayMs', 'range', 10, 10000, 10,
-		'EN: Maximum delay between clicks.<br>' +
-		'RU: Максимальная задержка между кликами.'));
-	settingsMenu.appendChild(createSettingElement('Auto Click Play', 'autoClickPlay', 'checkbox', null, null, null,
-		'EN: Automatically start the next game at the end of.<br>' +
-		'RU: Автоматически начинать следующую игру по окончании.'));
+	setInterval(videoTaskCompletion, Math.random() * 1000 + 3000);
+
+	const setting_inputs = [
+		// label, id, type, min, max, step, tooltipText
+		['Flower Skip (%)', 'flowerSkipPercentage', 'range', 0, 100, 1,
+			'EN: Percentage probability of skipping a flower.<br>RU: Вероятность пропуска цветка в процентах.'],
+		['Min Freeze Hits', 'minIceHits', 'range', 1, 10, 1,
+			'EN: Minimum number of clicks per freeze.<br>RU: Минимальное количество кликов на заморозку.'],
+		['Min Bomb Hits', 'minBombHits', 'range', 0, 10, 1,
+			'EN: Minimum number of clicks per bomb.<br>RU: Минимальное количество кликов на бомбу.'],
+		['Min Delay (ms)', 'minDelayMs', 'range', 10, 10000, 10,
+			'EN: Minimum delay between clicks.<br>RU: Минимальная задержка между кликами.'],
+		['Max Delay (ms)', 'maxDelayMs', 'range', 10, 10000, 10,
+			'EN: Maximum delay between clicks.<br>RU: Максимальная задержка между кликами.'],
+		['Auto Click Play', 'autoClickPlay', 'checkbox', null, null, null,
+			'EN: Automatically start the next game at the end of.<br>RU: Автоматически начинать следующую игру по окончании.'],
+		['Auto Claim Task', 'autoClaimTask', 'checkbox', null, null, null,
+			'EN: Automatically claim completed tasks.'], //? new
+		['Auto Video Task', 'autoVideoTask', 'checkbox', null, null, null,
+			'EN: Automatically start the next youtube video then verify.'], //? new
+		['Auto Verify Code', 'autoVerifyCode', 'checkbox', null, null, null,
+			'EN: Automatically verify started youtube task and. (If key is present)'], //? new
+	]
+
+	function updateSettingsMenu() {
+		const setting_params = setting_inputs.map(params => params[1]);
+		setting_params.forEach(function (id) {
+			const elem = document.getElementById(id)
+			elem.type != 'checkbox' ? elem.value = GAME_SETTINGS[id] : elem.checked = GAME_SETTINGS[id];
+		});
+	}
+	setting_inputs.forEach(function (setting_input_params) {
+		settingsMenu.appendChild(createSettingElement(...setting_input_params));
+	});
+
 
 	const pauseResumeButton = document.createElement('button');
 	pauseResumeButton.textContent = 'Pause';
@@ -425,7 +509,6 @@ try {
 	settingsMenu.appendChild(socialButtons);
 
 	document.body.appendChild(settingsMenu);
-
 	const settingsButton = document.createElement('button');
 	settingsButton.className = 'settings-button';
 	settingsButton.textContent = '⚙️';
@@ -634,7 +717,7 @@ try {
 
 		.settings-button {
 			position: fixed;
-			bottom: 30px;
+			bottom: 150px; /* for little higher so app navigarion don't get disturbed*/
 			right: 30px;
 			background: #227725e6;
 			backdrop-filter: blur(10px);
@@ -749,7 +832,7 @@ try {
 		if (type === 'checkbox') {
 			const switchLabel = document.createElement('label');
 			switchLabel.className = 'switch';
-			
+
 			input = document.createElement('input');
 			input.type = 'checkbox';
 			input.id = id;
@@ -758,10 +841,10 @@ try {
 				GAME_SETTINGS[id] = e.target.checked;
 				saveSettings();
 			});
-			
+
 			const slider = document.createElement('span');
 			slider.className = 'slider';
-			
+
 			switchLabel.appendChild(input);
 			switchLabel.appendChild(slider);
 			inputContainer.appendChild(switchLabel);
@@ -814,8 +897,8 @@ try {
 	updateSettingsMenu();
 
 	function toggleGamePause() {
-		isGamePaused = !isGamePaused;
-		pauseResumeButton.textContent = isGamePaused ? 'Resume' : 'Pause';
+		isGameToolPaused = !isGameToolPaused;
+		pauseResumeButton.textContent = isGameToolPaused ? 'Resume' : 'Pause';
 	}
 } catch (e) {
 	console.error("Blum Autoclicker error:", e);
