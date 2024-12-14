@@ -81,7 +81,7 @@ const answers = {
 async function fetchAndUpdateCodes() {
 	try {
 		const updatedSecretCodes = await fetch(
-			"https://raw.githubusercontent.com/mudachyo/Blum/refs/heads/main/videoCodes.json"
+			"https://raw.githubusercontent.com/mudachyo/Blum/refs/heads/main/answers/codes.json"
 		).then(res => {
 			if (!res.ok)
 				return {};
