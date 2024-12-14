@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Blum Autoclicker
-// @version      3.4
+// @version      3.5
 // @namespace    Violentmonkey Scripts
 // @author       mudachyo
 // @match        https://telegram.blum.codes/*
@@ -11,7 +11,7 @@
 // @homepage     https://github.com/mudachyo/Blum
 // ==/UserScript==
 
-const SCRIPT_VERSION = '3.4';
+const SCRIPT_VERSION = '3.5';
 const SCRIPT_URL = 'https://raw.githubusercontent.com/mudachyo/Blum/main/blum-autoclicker.user.js';
 
 let GAME_SETTINGS = {
@@ -28,91 +28,56 @@ let GAME_SETTINGS = {
 	autoClaimTask: true,
 };
 
-// INFO : Updated with new secret codes
 const answers = {
-	"How to Analyze crypto?": "VALUE",
-	"What’s DAO?": "N/A",
-	"Ton voices live": "I LOVE BLUM",
-	"Forks Explained?": "GO GET",
-	"How to secure your crypto": "BEST PROJECT EVE",
-	"Navigating Crypto": "HEYBLUM",
-	"What are Telegram Mini Apps?": "CRYPTOBLUM",
-	"Say No to Rug Pull!": "SUPERBLUM",
-	"What Are AMMs?": "CRYPTOSMART",
-	"Liquidity Pools Guide.": "BLUMERSSS",
-	"$2.5M+ DOGS Airdrop": "HAPPYDOGS",
-	"Doxxing? What’s that?": "NODOXXING",
-	"Pre-Market Trading?": "WOWBLUM",
-	"Play Track and Type Track Name": "BLUM – BIG CITY LIFE",
-	"How to Memecoin?": "MEMEBLUM",
-	"Token Burning – How and why it happens": "ONFIRE",
-	"Bitcoin Rainbow Chart": "SOBLUM",
-	"Crypto Terms Part 1.": "BLUMEXPLORER",
-	"How to Trade Perps?": "CRYPTOFAN",
-	"Shard Explained": "BLUMTASTIC",
-	"DeFi Explained": "BLUMFORCE",
-	"How to find Altcoins?": "ULTRABLUM",
-	"Crypto Slang Part 1": "BLUMSTORM",
-	"What is On-chain Analysis?": "BLUMEXTRA",
-	"Pumptober Special": "PUMPIT",
-	"DeFi Risks: Key Insights": "BLUMHELPS",
-	"Crypto Slang Part 2": "FOMOOO",
-	"What’s Crypto DEX?": "DEXXX",
-	"Choosing a Crypto Exchange": "CRYPTOZONE",
-	"Node Sales in Crypto": "BLUMIFY",
-	"Understanding Gas Fees": "CRYPTOGAS",
-	"What is Slippage?": "CRYPTOBUZZ",
-	"What’s Next for DeFi?": "BLUMNOW",
-	"Smart Contracts 101": "SMARTBLUM",
-	"Crypto Slang Part 3": "BOOBLUM",
-	"Regulation: Yay or Nay?": "BLUMSSS",
-	"DEX History": "GODEX",
-	"Crypto Regulations #2": "BLUMRULES",
-	"P2P Trading Safety Tips": "BLUMTIPS",
-	"Crypto Communities": "BLUMMUNITY",
-	"Dec 6 Crypto News": "HUNDRED",
-	"Dex Evolution": "BLUMSPARK",
-	"Crypto Slang Part 4": "LAMBOBLUM",
-	"What's Crypto DEX?": "DEXXX",
-	"What's Crypto DEX?": "DEXXX",
-	"Node Sales in Crypto": "BLUMIFY",
-	"Choosing a Crypto Exchange": "CRYPTOZONE",
-	"What's Crypto DEX?": "DEXXX",
-	"Node Sales in Crypto": "BLUMIFY",
-	"Choosing a Crypto Exchange": "CRYPTOZONE",
-	"Crypto Slang. Part 2": "FOMOOO",
-	"Crypto Slang. Part 2": "FOMOOO",
-	"DeFi Risks: Key Insights": "BLUMHELPS",
-	"Pumptober Special": "PUMPIT",
-	"What is On-chain Analysis?": "BLUMEXTRA",
-	"Crypto Slang. Part 2": "FOMOOO",
-	"DeFi Risks: Key Insights": "BLUMHELPS",
-	"Pumptober Special": "PUMPIT",
-	"What is On-chain Analysis?": "BLUMEXTRA",
-	"Crypto Slang. Part 1": "BLUMSTORM",
-	"How To Find Altcoins?": "ULTRABLUM",
-	"Sharding Explained": "BLUMTASTIC",
-	"How to trade Perps?": "CRYPTOFAN",
-	"Crypto Terms. Part 1": "BLUMEXPLORER",
-	"Bitcoin Rainbow Chart?": "SOBLUM",
-	"Token Burning: How & Why?": "ONFIRE",
-	"BLUM TRACK QUEST: Blum": "BIG CITY LIFE",
-	"Doxxing? What's that?": "NODOXXING",
-	"Liquidity Pools Guide": "BLUMERSSS",
-	"Liquidity Pools Guide": "BLUMERSSS",
-	"What Are AMMs?": "CRYPTOSMART",
-	"Say No to Rug Pull!": "SUPERBLUM",
-	"Liquidity Pools Guide": "BLUMERSSS",
-	"What Are AMMs?": "CRYPTOSMART",
-	"Say No to Rug Pull!": "SUPERBLUM",
-	"Secure your Crypto!": "BEST PROJECT EVER",
-	"Forks Explained": "GO GET",
-	"How To Analyze Crypto": "VALUE",
-	"Crypto Slang. Part 3": "BOOBLUM"
+    "How to Analyze Crypto": "VALUE",
+    "What’s DAO?": "N/A",
+    "Ton voices live": "I LOVE BLUM",
+    "Forks Explained": "GO GET",
+    "Secure your Crypto!": "BEST PROJECT EVER",
+    "Navigating Crypto": "HEYBLUM",
+    "What are Telegram Mini Apps?": "CRYPTOBLUM",
+    "Say No to Rug Pull!": "SUPERBLUM",
+    "Liquidity Pools Guide": "BLUMERSSS",
+    "$2.5M+ DOGS Airdrop": "HAPPYDOGS",
+    "Doxxing? What's that?": "NODOXXING",
+    "Pre-Market Trading?": "WOWBLUM",
+    "Play Track and Type Track Name": "BLUM – BIG CITY LIFE",
+    "How to Memecoin?": "MEMEBLUM",
+    "Token Burning: How & Why?": "ONFIRE",
+    "Bitcoin Rainbow Chart": "SOBLUM",
+    "Crypto Terms. Part 1": "BLUMEXPLORER",
+    "How to Trade Perps?": "CRYPTOFAN",
+    "Sharding Explained": "BLUMTASTIC",
+    "DeFi Explained": "BLUMFORCE",
+    "How To Find Altcoins?": "ULTRABLUM",
+    "Crypto Slang. Part 1": "BLUMSTORM",
+    "What is On-chain Analysis?": "BLUMEXTRA",
+    "Pumptober Special": "PUMPIT",
+    "DeFi Risks: Key Insights": "BLUMHELPS",
+    "Crypto Slang. Part 2": "FOMOOO",
+    "What’s Crypto DEX?": "DEXXX",
+    "Choosing a Crypto Exchange": "CRYPTOZONE",
+    "Node Sales in Crypto": "BLUMIFY",
+    "Understanding Gas Fees": "CRYPTOGAS",
+    "What is Slippage?": "CRYPTOBUZZ",
+    "What’s Next for DeFi?": "BLUMNOW",
+    "Smart Contracts 101": "SMARTBLUM",
+    "Crypto Slang. Part 3": "BOOBLUM",
+    "Regulation: Yay or Nay?": "BLUMSSS",
+    "DEX History": "GODEX",
+    "Crypto Regulations #2": "BLUMRULES",
+    "P2P Trading Safety Tips": "BLUMTIPS",
+    "Crypto Communities": "BLUMMUNITY",
+    "Dec 6 Crypto News": "HUNDRED",
+    "Dex Evolution": "BLUMSPARK",
+    "Crypto Slang. Part 4": "LAMBOBLUM",
+    "What Are AMMs?": "CRYPTOSMART",
+    "Memepad Tutorial": "MEMEPAD",
+    "DEX History #3": "LOVEBLUM",
+    "Blum CMO @ Blockchain Life": "BLUMISLIFE",
+    "Is Binance a DEX?": "BLUMIES"
 };
 
-
-// INFO : updated secret codes without updating the script 🥰
 try {
 	const updatedSecretCodes = await fetch(
 		"https://raw.githubusercontent.com/mudachyo/Blum/refs/heads/main/videoCodes.json"
@@ -385,15 +350,18 @@ try {
 				return;
 			}
 
-			const question = questionElement.innerText.trim();
+			const question = questionElement.innerText.trim().toLowerCase();
 
-			const answer = answers[question];
+			const normalizedAnswers = Object.fromEntries(
+				Object.entries(answers).map(([key, value]) => [key.toLowerCase(), value])
+			);
+
+			const answer = normalizedAnswers[question];
 			if (!answer) {
 				return console.warn(`The answer for the question "${question}" not found!`);
 			}
-			const inputElement = document.querySelector(
-				"div.input-container input"
-			);
+
+			const inputElement = document.querySelector("div.input-container input");
 
 			if (!inputElement) {
 				console.warn("The field for entering an answer was not found!");
@@ -429,7 +397,7 @@ try {
 					document.querySelectorAll(".pages-tasks-item:has(>*>*>button.is-status-ready-for-verify) .details"))
 				.filter(
 					verifyBtn => verifyBtn.childNodes[0].textContent in answers
-				)[0] // INFO : get oldest verify button element with secret code in answer list task
+				)[0]
 				?.parentElement?.lastChild?.click();
 		}
 		if (GAME_SETTINGS.autoVerifyCode) {
@@ -457,11 +425,11 @@ try {
 		['Auto Click Play', 'autoClickPlay', 'checkbox', null, null, null,
 			'EN: Automatically start the next game at the end of.<br>RU: Автоматически начинать следующую игру по окончании.'],
 		['Auto Claim Task', 'autoClaimTask', 'checkbox', null, null, null,
-			'EN: Automatically claim completed tasks.'], //? new
+			'EN: Automatically claim completed tasks.<br>RU: Автоматически принимать выполненные задачи.'],
 		['Auto Video Task', 'autoVideoTask', 'checkbox', null, null, null,
-			'EN: Automatically start the next youtube video then verify.'], //? new
+			'EN: Automatically start the next youtube video then verify.<br>RU: Автоматически запускать следующее видео на YouTube, а затем проверять.'],
 		['Auto Verify Code', 'autoVerifyCode', 'checkbox', null, null, null,
-			'EN: Automatically verify started youtube task and. (If key is present)'], //? new
+			'EN: Automatically verify started youtube task and. (If key is present)<br>RU: Автоматически проверять запущенную задачу на YouTube. (Если есть ответ)'],
 	]
 
 	function updateSettingsMenu() {
